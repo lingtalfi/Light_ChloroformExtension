@@ -4,7 +4,7 @@
 
 The LightChloroformExtensionService class
 ================
-2019-11-18 --> 2019-11-18
+2019-11-18 --> 2019-11-19
 
 
 
@@ -34,9 +34,10 @@ class <span class="pl-k">LightChloroformExtensionService</span>  {
     - public [registerTableListConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/registerTableListConfigurationHandler.md)(string $pluginName, [Ling\Light_ChloroformExtension\Field\ConfigurationHandler\TableListFieldConfigurationHandlerInterface](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/ConfigurationHandler/TableListFieldConfigurationHandlerInterface.md) $handler) : void
     - public [getTableListNumberOfItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListNumberOfItems.md)(string $tableListIdentifier) : int
     - public [getTableListItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListItems.md)(string $tableListIdentifier, ?bool $valueAsIndex = true) : array
+    - public [getTableListLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListLabel.md)(string $columnValue, string $tableListIdentifier) : string
     - public [getTableListConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListConfigurationItem.md)(string $tableListIdentifier) : array
     - public [setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : void
-    - protected [getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListSqlQueryInfo.md)(string $tableListIdentifier, ?bool $isCount = true) : array
+    - protected [getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListSqlQueryInfo.md)(string $tableListIdentifier, ?bool $isCount = true, ?array $options = []) : array
 
 }
 
@@ -75,6 +76,7 @@ Methods
 - [LightChloroformExtensionService::registerTableListConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/registerTableListConfigurationHandler.md) &ndash; Registers a table list configuration handler for the given plugin name.
 - [LightChloroformExtensionService::getTableListNumberOfItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListNumberOfItems.md) &ndash; Returns the number of items/rows of the query associated to the given table list dentifier.
 - [LightChloroformExtensionService::getTableListItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListItems.md) &ndash; Returns an array of rows based on the given tableListIdentifier.
+- [LightChloroformExtensionService::getTableListLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListLabel.md) &ndash; Returns the formatted label of the column, based on the given raw value.
 - [LightChloroformExtensionService::getTableListConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListConfigurationItem.md) &ndash; Returns the table list [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) referenced by the given identifier.
 - [LightChloroformExtensionService::setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/setContainer.md) &ndash; Sets the container.
 - [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListSqlQueryInfo.md) &ndash; Returns an array containing the sql query and the corresponding pdo markers, based the given table list identifier.

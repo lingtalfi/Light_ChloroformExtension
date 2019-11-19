@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.1.0 -- 2019-11-19
+
+    - update TableListField conception, now handles the first display of ajax list with the column property
+    
 - 1.0.0 -- 2019-11-18
 
     - initial commit

@@ -71,7 +71,21 @@ class TableListField extends SelectField
     public function toArray(): array
     {
         $this->prepareItems();
-        return parent::toArray();
+        $arr = parent::toArray();
+
+
+        //--------------------------------------------
+        // initializing the formatted value for the auto-complete field if necessary
+        //--------------------------------------------
+        if (true === $arr['useAutoComplete']) {
+            /**
+             * @var $chloroformX LightChloroformExtensionService
+             */
+            $chloroformX = $this->container->get('chloroform_extension');
+            $value = $arr['value'];
+            $arr['autoCompleteLabel'] = $chloroformX->getTableListLabel($value, $arr['tableListIdentifier']);
+        }
+        return $arr;
     }
 
 
@@ -100,6 +114,7 @@ class TableListField extends SelectField
 
             if ($numberOfItems > $this->properties['threshold']) {
                 // use auto-complete
+
                 $this->properties['useAutoComplete'] = true;
             } else {
                 $items = $chloroformX->getTableListItems($tableListIdentifier);

@@ -74,10 +74,12 @@ interface.
 This object basically returns a **configuration item** which structure is the following:
 
 - fields: string representing the fields to fetch, as they are written in the sql query.
+            It should yields two columns: value and label. You might use aliases to achieve that.
+
             For instance:
            
-                - id, first_name
-                - id, concat(id, ".", first_name) 
+                - id as value, first_name as label
+                - id as value, concat(id, ".", first_name) as label 
                 
 - table: the complete name (i.e. with alias if necessary) of the table used in this request
             For instance:   
@@ -86,7 +88,10 @@ This object basically returns a **configuration item** which structure is the fo
                 - `lud_user`
                 - lud_user u
                 
-            Notice: if you need backquotes, write them manually (like in the second example above).                
+            Notice: if you need backquotes, write them manually (like in the second example above).
+
+- column: the target column, used to select the row. In particular, this is used to get the
+            formatted default value when in ajax mode (when there are too many items for a regular select).                              
                 
 - ?joins: string representing the joins part of the query.
             For instance:

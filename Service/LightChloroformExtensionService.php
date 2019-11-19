@@ -116,6 +116,39 @@ class LightChloroformExtensionService
         return $pdoWrapper->fetchAll($q, $markers);
     }
 
+
+    /**
+     * Returns the formatted label of the column, based on the given raw value.
+     * The formatting is based on the configuration pointed by the given tableListIdentifier (i.e. if your
+     * fields property use concat, see the @page(chloroformExtension conception notes) for more info).
+     *
+     *
+     * @param string $columnValue
+     * @param string $tableListIdentifier
+     * @return string
+     * @throws \Exception
+     */
+    public function getTableListLabel(string $columnValue, string $tableListIdentifier): string
+    {
+        $conf = $this->getTableListConfigurationItem($tableListIdentifier);
+        $column = $conf['column'];
+        list($q, $markers) = $this->getTableListSqlQueryInfo($tableListIdentifier, false, [
+            "whereDev" => "$column = :wheredev",
+        ]);
+        $markers['wheredev'] = $columnValue;
+
+
+        /**
+         * @var $pdoWrapper SimplePdoWrapperInterface
+         */
+        $pdoWrapper = $this->container->get("database");
+        $row = $pdoWrapper->fetch($q, $markers);
+        if (false !== $row) {
+            return $row['label'];
+        }
+        throw new LightChloroformExtensionException("Couldn't fetch the row value with query $q. The table list identifier is $tableListIdentifier.");
+    }
+
     /**
      * Returns the table list @page(configuration item) referenced by the given identifier.
      *
@@ -160,7 +193,6 @@ class LightChloroformExtensionService
     //--------------------------------------------
 
 
-
     /**
      * Returns an array containing the sql query and the corresponding pdo markers, based the given table list identifier.
      * The type of query returned depends on the isCount flag.
@@ -168,14 +200,23 @@ class LightChloroformExtensionService
      * - if isCount=true, then the query is a count query (i.e. select count(*) as count...)
      * - if isCount=false, then the query is a query to fetch the items/rows.
      *
+     * The available options are:
+     * - whereDev: an extra string to add to the where clause
+     *
+     *
      *
      * @param string $tableListIdentifier
      * @param bool $isCount
+     * @param array $options
      * @return array
      * @throws \Exception
      */
-    protected function getTableListSqlQueryInfo(string $tableListIdentifier, bool $isCount = true): array
+    protected function getTableListSqlQueryInfo(string $tableListIdentifier, bool $isCount = true, array $options = []): array
     {
+        $whereDev = $options['whereDev'] ?? '';
+
+
+        //
         $markers = [];
         $item = $this->getTableListConfigurationItem($tableListIdentifier);
         $fields = $item['fields'];
@@ -191,9 +232,21 @@ class LightChloroformExtensionService
         if ($joins) {
             $q .= " $joins";
         }
+        $userWhereUsed = false;
         if ($where) {
             $q .= " where $where";
+            $userWhereUsed = true;
         }
+
+        if ($whereDev) {
+            if (false === $userWhereUsed) {
+                $q .= " where ";
+            } else {
+                $q .= " and ";
+            }
+            $q .= $whereDev;
+        }
+
         return [$q, $markers];
     }
 

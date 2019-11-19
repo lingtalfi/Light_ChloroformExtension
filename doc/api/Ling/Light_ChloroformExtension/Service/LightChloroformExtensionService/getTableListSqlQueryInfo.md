@@ -16,7 +16,7 @@ Description
 ================
 
 
-protected [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListSqlQueryInfo.md)(string $tableListIdentifier, ?bool $isCount = true) : array
+protected [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListSqlQueryInfo.md)(string $tableListIdentifier, ?bool $isCount = true, ?array $options = []) : array
 
 
 
@@ -26,6 +26,9 @@ The type of query returned depends on the isCount flag.
 
 - if isCount=true, then the query is a count query (i.e. select count(*) as count...)
 - if isCount=false, then the query is a query to fetch the items/rows.
+
+The available options are:
+- whereDev: an extra string to add to the where clause
 
 
 
@@ -39,6 +42,10 @@ Parameters
     
 
 - isCount
+
+    
+
+- options
 
     
 
@@ -62,7 +69,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L177-L198)
+See the source code for method [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L214-L251)
 
 
 See Also
