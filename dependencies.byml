@@ -1,7 +1,7 @@
 dependencies: 
     Ling: 
         - Light_AjaxHandler
-        - Light_CsrfSimple
+        - Light_CsrfSession
         - Light_MicroPermission
         - Chloroform
         - Light

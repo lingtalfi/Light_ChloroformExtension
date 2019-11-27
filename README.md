@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.2.0 -- 2019-11-27
+
+    - use of csrf_session service replaces csrf_simple
+    
 - 1.1.0 -- 2019-11-19
 
     - update TableListField conception, now handles the first display of ajax list with the column property

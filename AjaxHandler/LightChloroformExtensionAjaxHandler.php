@@ -7,7 +7,7 @@ namespace Ling\Light_ChloroformExtension\AjaxHandler;
 use Ling\Light_AjaxHandler\Handler\ContainerAwareLightAjaxHandler;
 use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
 use Ling\Light_ChloroformExtension\Service\LightChloroformExtensionService;
-use Ling\Light_CsrfSimple\Service\LightCsrfSimpleService;
+use Ling\Light_CsrfSession\Service\LightCsrfSessionService;
 use Ling\Light_MicroPermission\Service\LightMicroPermissionService;
 
 /**
@@ -45,11 +45,11 @@ class LightChloroformExtensionAjaxHandler extends ContainerAwareLightAjaxHandler
                     if (true === $useCsrfToken) {
                         if (array_key_exists('csrf_token', $params)) {
                             /**
-                             * @var $csrfSimple LightCsrfSimpleService
+                             * @var $csrfService LightCsrfSessionService
                              */
-                            $csrfSimple = $this->container->get('csrf_simple');
+                            $csrfService = $this->container->get('csrf_session');
                             $csrfToken = $params['csrf_token'];
-                            if (false === $csrfSimple->isValid($csrfToken)) {
+                            if (false === $csrfService->isValid($csrfToken)) {
                                 throw new LightChloroformExtensionException("Invalid csrf token provided for action $actionId and table list identifier $tableListIdentifier.");
                             }
 
