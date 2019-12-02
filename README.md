@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.2.1 -- 2019-12-02
+
+    - fix TableListField->toArray throwing exception in insert mode
+    
 - 1.2.0 -- 2019-11-27
 
     - use of csrf_session service replaces csrf_simple

@@ -83,7 +83,11 @@ class TableListField extends SelectField
              */
             $chloroformX = $this->container->get('chloroform_extension');
             $value = $arr['value'];
-            $arr['autoCompleteLabel'] = $chloroformX->getTableListLabel($value, $arr['tableListIdentifier']);
+            if (empty($value)) { // insert mode
+                $arr['autoCompleteLabel'] = '';
+            } else { // update mode
+                $arr['autoCompleteLabel'] = $chloroformX->getTableListLabel($value, $arr['tableListIdentifier']);
+            }
         }
         return $arr;
     }
