@@ -91,7 +91,11 @@ This object basically returns a **configuration item** which structure is the fo
             Notice: if you need backquotes, write them manually (like in the second example above).
 
 - column: the target column, used to select the row. In particular, this is used to get the
-            formatted default value when in ajax mode (when there are too many items for a regular select).                              
+            formatted default value when in ajax mode (when there are too many items for a regular select).
+            
+- search_column; the "column" to search in when the user types a request.
+            For instance:
+                - concat(id, '. ', name)                                          
                 
 - ?joins: string representing the joins part of the query.
             For instance:

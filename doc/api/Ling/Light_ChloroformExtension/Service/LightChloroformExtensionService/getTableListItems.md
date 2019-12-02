@@ -16,7 +16,7 @@ Description
 ================
 
 
-public [LightChloroformExtensionService::getTableListItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListItems.md)(string $tableListIdentifier, ?bool $valueAsIndex = true) : array
+public [LightChloroformExtensionService::getTableListItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService/getTableListItems.md)(string $tableListIdentifier, ?string $userQuery = , ?bool $valueAsIndex = true) : array
 
 
 
@@ -37,6 +37,10 @@ Parameters
 
 
 - tableListIdentifier
+
+    
+
+- userQuery
 
     
 
@@ -64,7 +68,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightChloroformExtensionService::getTableListItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L105-L117)
+See the source code for method [LightChloroformExtensionService::getTableListItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L106-L120)
 
 
 See Also

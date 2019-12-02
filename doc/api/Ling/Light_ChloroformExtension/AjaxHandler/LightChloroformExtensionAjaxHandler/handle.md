@@ -59,7 +59,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightChloroformExtensionAjaxHandler::handle](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/AjaxHandler/LightChloroformExtensionAjaxHandler.php#L22-L98)
+See the source code for method [LightChloroformExtensionAjaxHandler::handle](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/AjaxHandler/LightChloroformExtensionAjaxHandler.php#L22-L99)
 
 
 See Also

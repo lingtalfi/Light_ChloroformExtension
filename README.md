@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.2.2 -- 2019-12-02
+
+    - fix forgot to take into account the user query
+    
 - 1.2.1 -- 2019-12-02
 
     - fix TableListField->toArray throwing exception in insert mode

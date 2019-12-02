@@ -29,6 +29,7 @@ class LightChloroformExtensionAjaxHandler extends ContainerAwareLightAjaxHandler
 
 
                     $tableListIdentifier = $params['tableListIdentifier'];
+                    $userQuery = $params['q'] ?? '';
 
 
                     /**
@@ -79,7 +80,7 @@ class LightChloroformExtensionAjaxHandler extends ContainerAwareLightAjaxHandler
                     //--------------------------------------------
                     //
                     //--------------------------------------------
-                    $rows = $chloroformX->getTableListItems($tableListIdentifier, false);
+                    $rows = $chloroformX->getTableListItems($tableListIdentifier, $userQuery, false);
                     $response = [
                         "type" => 'success',
                         "rows" => $rows,

@@ -98,13 +98,16 @@ class LightChloroformExtensionService
      *
      *
      * @param string $tableListIdentifier
-     * @param bool $valueAsIndex
+     * @param bool $valueAsIndex =true
+     * @param string $userQuery =''
      * @return array
      * @throws \Exception
      */
-    public function getTableListItems(string $tableListIdentifier, bool $valueAsIndex = true): array
+    public function getTableListItems(string $tableListIdentifier, string $userQuery = '', bool $valueAsIndex = true): array
     {
-        list($q, $markers) = $this->getTableListSqlQueryInfo($tableListIdentifier, false);
+        list($q, $markers) = $this->getTableListSqlQueryInfo($tableListIdentifier, false, [
+            'userQuery' => $userQuery,
+        ]);
 
         /**
          * @var $pdoWrapper SimplePdoWrapperInterface
@@ -214,15 +217,19 @@ class LightChloroformExtensionService
     protected function getTableListSqlQueryInfo(string $tableListIdentifier, bool $isCount = true, array $options = []): array
     {
         $whereDev = $options['whereDev'] ?? '';
+        $userQuery = $options['userQuery'] ?? null;
 
 
         //
         $markers = [];
         $item = $this->getTableListConfigurationItem($tableListIdentifier);
         $fields = $item['fields'];
+        $searchColumn = $item['search_column'] ?? '';
         $table = $item['table'];
         $joins = $item['joins'] ?? '';
         $where = $item['where'] ?? '';
+
+
         if (true === $isCount) {
             $q = "select count(*) as count";
         } else {
@@ -237,6 +244,18 @@ class LightChloroformExtensionService
             $q .= " where $where";
             $userWhereUsed = true;
         }
+
+        if ($userQuery) {
+            if (false === $userWhereUsed) {
+                $q .= " where ";
+            } else {
+                $q .= " and ";
+            }
+            $q .= $searchColumn . ' like :user_query';
+            // for now we don't allow sql wildcards.
+            $markers['user_query'] = '%' . addcslashes($userQuery, '%_') . '%';
+        }
+
 
         if ($whereDev) {
             if (false === $userWhereUsed) {

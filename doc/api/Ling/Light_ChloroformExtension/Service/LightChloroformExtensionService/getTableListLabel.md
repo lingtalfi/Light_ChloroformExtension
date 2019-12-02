@@ -60,7 +60,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightChloroformExtensionService::getTableListLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L131-L150)
+See the source code for method [LightChloroformExtensionService::getTableListLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L134-L153)
 
 
 See Also

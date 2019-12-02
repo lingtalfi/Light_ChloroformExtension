@@ -69,7 +69,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L214-L251)
+See the source code for method [LightChloroformExtensionService::getTableListSqlQueryInfo](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L217-L270)
 
 
 See Also
