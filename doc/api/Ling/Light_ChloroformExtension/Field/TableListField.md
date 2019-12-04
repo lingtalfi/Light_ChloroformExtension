@@ -4,7 +4,7 @@
 
 The TableListField class
 ================
-2019-11-18 --> 2019-12-02
+2019-11-18 --> 2019-12-04
 
 
 
@@ -23,11 +23,12 @@ Class synopsis
 ==============
 
 
-class <span class="pl-k">TableListField</span> extends [SelectField](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Field/SelectField.md) implements [FieldInterface](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Field/FieldInterface.md) {
+class <span class="pl-k">TableListField</span> extends [SelectField](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Field/SelectField.md) implements [FieldInterface](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Field/FieldInterface.md), [FormAwareFieldInterface](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Field/FormAwareFieldInterface.md) {
 
 - Properties
     - protected [Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) [$container](#property-container) ;
     - protected bool [$isPrepared](#property-isPrepared) ;
+    - protected [Ling\Chloroform\Form\Chloroform](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Form/Chloroform.md) [$form](#property-form) ;
 
 - Inherited properties
     - protected array [SelectField::$items](#property-items) ;
@@ -45,8 +46,10 @@ class <span class="pl-k">TableListField</span> extends [SelectField](https://git
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/__construct.md)(?array $properties = []) : void
+    - public [setForm](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setForm.md)([Ling\Chloroform\Form\Chloroform](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Form/Chloroform.md) $form) : void
     - public [setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : [TableListField](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField.md)
     - public [toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/toArray.md)() : array
+    - public [setValue](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setValue.md)($value) : [TableListField](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField.md)
     - private [prepareItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/prepareItems.md)() : void
 
 - Inherited methods
@@ -56,7 +59,6 @@ class <span class="pl-k">TableListField</span> extends [SelectField](https://git
     - public AbstractField::addValidator([Ling\Chloroform\Validator\ValidatorInterface](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Validator/ValidatorInterface.md) $validator) : mixed
     - public AbstractField::validates($value) : bool
     - public AbstractField::getErrors() : array
-    - public AbstractField::setValue($value) : Ling\Chloroform\Field\AbstractField
     - public AbstractField::getValue() : mixed
     - public AbstractField::getFallbackValue() : mixed
     - public AbstractField::hasVeryImportantData() : bool
@@ -87,6 +89,12 @@ Properties
 - <span id="property-isPrepared"><b>isPrepared</b></span>
 
     This property holds the isPrepared for this instance.
+    
+    
+
+- <span id="property-form"><b>form</b></span>
+
+    This property holds the form for this instance.
     
     
 
@@ -182,8 +190,10 @@ Methods
 ==============
 
 - [TableListField::__construct](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/__construct.md) &ndash; Builds the AbstractField instance.
+- [TableListField::setForm](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setForm.md) &ndash; Sets the form instance.
 - [TableListField::setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setContainer.md) &ndash; Sets the container.
 - [TableListField::toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/toArray.md) &ndash; Returns the array representation of the field.
+- [TableListField::setValue](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setValue.md) &ndash; Sets the value for this instance.
 - [TableListField::prepareItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/prepareItems.md) &ndash; Prepares this class to be exported with the toArray method.
 - SelectField::create &ndash; Builds and returns the instance.
 - SelectField::setItems &ndash; Sets the items.
@@ -191,7 +201,6 @@ Methods
 - AbstractField::addValidator &ndash; Adds a validator to this instance.
 - AbstractField::validates &ndash; Tests and returns whether every validator attached to this instanced passed.
 - AbstractField::getErrors &ndash; Returns an array of error messages.
-- AbstractField::setValue &ndash; Sets the value for this instance.
 - AbstractField::getValue &ndash; Returns the value of the field.
 - AbstractField::getFallbackValue &ndash; Returns the fallback value, which defaults to null.
 - AbstractField::hasVeryImportantData &ndash; Returns whether this field contains [very important data](https://github.com/lingtalfi/Chloroform/blob/master/doc/pages/chloroform-discussion.md#the-concept-of-very-important-data).
@@ -218,4 +227,4 @@ See the source code of [Ling\Light_ChloroformExtension\Field\TableListField](htt
 
 SeeAlso
 ==============
-Previous class: [TableListFieldConfigurationHandlerInterface](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/ConfigurationHandler/TableListFieldConfigurationHandlerInterface.md)<br>Next class: [LightChloroformExtensionService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService.md)<br>
+Previous class: [TableListService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService.md)<br>Next class: [LightChloroformExtensionService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Service/LightChloroformExtensionService.md)<br>

@@ -3,9 +3,11 @@ dependencies:
         - Light_AjaxHandler
         - Light_CsrfSession
         - Light_MicroPermission
-        - Chloroform
+        - BabyYaml
         - Light
+        - Light_Database
         - SimplePdoWrapper
+        - Chloroform
     
 
 post_install: 

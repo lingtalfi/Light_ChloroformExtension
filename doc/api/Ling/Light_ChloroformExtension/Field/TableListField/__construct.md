@@ -67,7 +67,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [TableListField::__construct](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L34-L49)
+See the source code for method [TableListField::__construct](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L43-L63)
 
 
 See Also
@@ -75,5 +75,5 @@ See Also
 
 The [TableListField](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField.md) class.
 
-Next method: [setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setContainer.md)<br>
+Next method: [setForm](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setForm.md)<br>
 

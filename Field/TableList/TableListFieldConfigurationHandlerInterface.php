@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ling\Light_ChloroformExtension\Field\ConfigurationHandler;
+namespace Ling\Light_ChloroformExtension\Field\TableList;
 
 /**
  * The TableListFieldConfigurationHandlerInterface interface.

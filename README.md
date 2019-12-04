@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.3.0 -- 2019-12-04
+
+    - add TableListService and moved methods from LightChloroformExtensionService to TableListService
+    
 - 1.2.2 -- 2019-12-02
 
     - fix forgot to take into account the user query

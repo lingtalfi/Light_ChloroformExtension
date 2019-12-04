@@ -4,16 +4,19 @@
 namespace Ling\Light_ChloroformExtension\Field;
 
 
+use Ling\Chloroform\Field\FormAwareFieldInterface;
 use Ling\Chloroform\Field\SelectField;
+use Ling\Chloroform\Form\Chloroform;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_ChloroformExtension\Service\LightChloroformExtensionService;
+use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
+use Ling\Light_ChloroformExtension\Field\TableList\TableListService;
 
 
 /**
  * The TableListField class.
  * See more in the @page(TableListField conception notes)
  */
-class TableListField extends SelectField
+class TableListField extends SelectField implements FormAwareFieldInterface
 {
     /**
      * This property holds the container for this instance.
@@ -27,6 +30,12 @@ class TableListField extends SelectField
      */
     protected $isPrepared;
 
+    /**
+     * This property holds the form for this instance.
+     * @var Chloroform
+     */
+    protected $form;
+
 
     /**
      * @overrides
@@ -36,18 +45,31 @@ class TableListField extends SelectField
         // ensure the some properties are defined
         $tableListIdentifier = $properties['tableListIdentifier'] ?? null;
         $threshold = $properties['threshold'] ?? 200;
+        $mode = $properties['mode'] ?? 'default'; // default | multiplier
         $useAutoComplete = false;
 
         //
         $properties['tableListIdentifier'] = $tableListIdentifier;
         $properties['threshold'] = $threshold;
         $properties['useAutoComplete'] = $useAutoComplete;
+        $properties['mode'] = $mode;
+        if ('multiplier' === $mode) {
+            $properties['multiple'] = true;
+        }
 
         parent::__construct($properties);
         $this->container = null;
         $this->isPrepared = false;
     }
 
+
+    /**
+     * @implementation
+     */
+    public function setForm(Chloroform $form)
+    {
+        $this->form = $form;
+    }
 
     //--------------------------------------------
     //
@@ -79,18 +101,54 @@ class TableListField extends SelectField
         //--------------------------------------------
         if (true === $arr['useAutoComplete']) {
             /**
-             * @var $chloroformX LightChloroformExtensionService
+             * @var $tableList TableListService
              */
-            $chloroformX = $this->container->get('chloroform_extension');
+            $tableList = $this->container->get('chloroform_extension')->getTableListService($arr['tableListIdentifier']);
             $value = $arr['value'];
             if (empty($value)) { // insert mode
                 $arr['autoCompleteLabel'] = '';
             } else { // update mode
-                $arr['autoCompleteLabel'] = $chloroformX->getTableListLabel($value, $arr['tableListIdentifier']);
+                $arr['autoCompleteLabel'] = $tableList->getLabel($value);
             }
         }
         return $arr;
     }
+
+    /**
+     * @overrides
+     */
+    public function setValue($value)
+    {
+        if (false === $this->form->isPosted()) {
+            if ('multiplier' === $this->properties['mode']) {
+                $options = $this->properties['multiplier'];
+
+                $table = $options['table'];
+                $whereCol = $options['where_column'];
+                $multiplierCol = $options['multiplier_column'];
+                /**
+                 * Assuming for now that the data is set in $_GET.
+                 * If from $_POST, add a property to choose the pool (get|post)...
+                 */
+                $whereColVal = $_GET[$whereCol] ?? null;
+                if (null !== $whereColVal) {
+
+
+                    /**
+                     * @var $tableList TableListService
+                     */
+                    $tableList = $this->container->get('chloroform_extension')->getTableListService($this->properties['tableListIdentifier']);
+                    $value = $tableList->getMultiplierInitialValues($table, $multiplierCol, $whereCol, $whereColVal);
+                } else {
+                    throw new LightChloroformExtensionException("Where column value not found for column $whereCol.");
+                }
+
+            }
+        }
+        return parent::setValue($value);
+    }
+
+
 
 
 
@@ -110,10 +168,10 @@ class TableListField extends SelectField
             $tableListIdentifier = $this->properties['tableListIdentifier'];
 
             /**
-             * @var $chloroformX LightChloroformExtensionService
+             * @var $tableList TableListService
              */
-            $chloroformX = $this->container->get('chloroform_extension');
-            $numberOfItems = $chloroformX->getTableListNumberOfItems($tableListIdentifier);
+            $tableList = $this->container->get('chloroform_extension')->getTableListService($tableListIdentifier);
+            $numberOfItems = $tableList->getNumberOfItems();
 
 
             if ($numberOfItems > $this->properties['threshold']) {
@@ -121,7 +179,7 @@ class TableListField extends SelectField
 
                 $this->properties['useAutoComplete'] = true;
             } else {
-                $items = $chloroformX->getTableListItems($tableListIdentifier);
+                $items = $tableList->getItems();
                 $this->setItems($items);
             }
             $this->isPrepared = true;
