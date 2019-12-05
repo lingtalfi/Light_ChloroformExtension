@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.3.1 -- 2019-12-05
+
+    - fix LightChloroformExtensionAjaxHandler not compatible with new TableListService addition
+    
 - 1.3.0 -- 2019-12-04
 
     - add TableListService and moved methods from LightChloroformExtensionService to TableListService

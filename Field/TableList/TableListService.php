@@ -201,22 +201,18 @@ class TableListService
     }
 
 
-
-
-
-    //--------------------------------------------
-    //
-    //--------------------------------------------
-
     /**
      * Returns the table list @page(configuration item) referenced by the given pluginId.
      *
-     * @param string $pluginId
+     * @param string|null $pluginId = null
      * @return array
      * @throws \Exception
      */
-    protected function getTableListConfigurationItem(string $pluginId): array
+    public function getConfigurationItem(string $pluginId = null): array
     {
+        if (null === $pluginId) {
+            $pluginId = $this->pluginId;
+        }
         if (array_key_exists($pluginId, $this->_cache)) {
             return $this->_cache[$pluginId];
         }
@@ -224,6 +220,11 @@ class TableListService
         $this->_cache[$pluginId] = $conf;
         return $conf;
     }
+
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
 
     /**
@@ -251,7 +252,7 @@ class TableListService
 
         //
         $markers = [];
-        $item = $this->getTableListConfigurationItem($this->pluginId);
+        $item = $this->getConfigurationItem($this->pluginId);
         $fields = $item['fields'];
         $searchColumn = $item['search_column'] ?? '';
         $table = $item['table'];

@@ -6,6 +6,7 @@ namespace Ling\Light_ChloroformExtension\AjaxHandler;
 
 use Ling\Light_AjaxHandler\Handler\ContainerAwareLightAjaxHandler;
 use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
+use Ling\Light_ChloroformExtension\Field\TableList\TableListService;
 use Ling\Light_ChloroformExtension\Service\LightChloroformExtensionService;
 use Ling\Light_CsrfSession\Service\LightCsrfSessionService;
 use Ling\Light_MicroPermission\Service\LightMicroPermissionService;
@@ -36,7 +37,12 @@ class LightChloroformExtensionAjaxHandler extends ContainerAwareLightAjaxHandler
                      * @var $chloroformX LightChloroformExtensionService
                      */
                     $chloroformX = $this->container->get('chloroform_extension');
-                    $conf = $chloroformX->getTableListConfigurationItem($tableListIdentifier);
+
+                    /**
+                     * @var $tableList TableListService
+                     */
+                    $tableList = $chloroformX->getTableListService($tableListIdentifier);
+                    $conf = $tableList->getConfigurationItem();
 
 
                     //--------------------------------------------
@@ -80,7 +86,7 @@ class LightChloroformExtensionAjaxHandler extends ContainerAwareLightAjaxHandler
                     //--------------------------------------------
                     //
                     //--------------------------------------------
-                    $rows = $chloroformX->getTableListItems($tableListIdentifier, $userQuery, false);
+                    $rows = $tableList->getItems($userQuery, false);
                     $response = [
                         "type" => 'success',
                         "rows" => $rows,

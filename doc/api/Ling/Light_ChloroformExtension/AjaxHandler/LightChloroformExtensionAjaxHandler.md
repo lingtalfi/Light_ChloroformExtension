@@ -4,7 +4,7 @@
 
 The LightChloroformExtensionAjaxHandler class
 ================
-2019-11-18 --> 2019-12-04
+2019-11-18 --> 2019-12-05
 
 
 
