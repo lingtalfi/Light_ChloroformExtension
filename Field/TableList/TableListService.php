@@ -121,7 +121,7 @@ class TableListService
      */
     public function getLabel(string $columnValue): string
     {
-        $conf = $this->getTableListConfigurationItem($this->pluginId);
+        $conf = $this->getConfigurationItem($this->pluginId);
         $column = $conf['column'];
         list($q, $markers) = $this->getTableListSqlQueryInfo(false, [
             "whereDev" => "$column = :wheredev",
@@ -141,29 +141,6 @@ class TableListService
     }
 
 
-    /**
-     * Returns an array of the multiplier values when in update mode initial state (i.e. form not posted).
-     * See the @page(form multiplier trick) for more details.
-     *
-     * @param mixed $hasTable
-     * @param mixed $multiplierColumn
-     * @param mixed $pivotColumn
-     * @param mixed $pivotValue
-     * @return array
-     * @throws \Exception
-     */
-    public function getMultiplierInitialValues(string $hasTable, string $multiplierColumn, string $pivotColumn, $pivotValue): array
-    {
-        $q = "select $multiplierColumn from $hasTable where $pivotColumn=:value";
-        $markers = [
-            'value' => $pivotValue,
-        ];
-        /**
-         * @var $db LightDatabaseService
-         */
-        $db = $this->container->get("database");
-        return $db->fetchAll($q, $markers, \PDO::FETCH_COLUMN);
-    }
 
 
     //--------------------------------------------

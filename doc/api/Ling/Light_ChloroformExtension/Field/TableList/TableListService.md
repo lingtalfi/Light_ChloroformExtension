@@ -4,7 +4,7 @@
 
 The TableListService class
 ================
-2019-11-18 --> 2019-12-05
+2019-11-18 --> 2019-12-06
 
 
 
@@ -35,7 +35,6 @@ class <span class="pl-k">TableListService</span>  {
     - public [getNumberOfItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getNumberOfItems.md)() : int
     - public [getItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getItems.md)(?string $userQuery = , ?bool $valueAsIndex = true) : array
     - public [getLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getLabel.md)(string $columnValue) : string
-    - public [getMultiplierInitialValues](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getMultiplierInitialValues.md)(string $hasTable, string $multiplierColumn, string $pivotColumn, $pivotValue) : array
     - public [setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : void
     - public [setConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setConfigurationHandler.md)([Ling\Light_ChloroformExtension\Field\TableList\TableListFieldConfigurationHandlerInterface](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListFieldConfigurationHandlerInterface.md) $configurationHandler) : void
     - public [setPluginId](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setPluginId.md)(string $pluginId) : void
@@ -84,7 +83,6 @@ Methods
 - [TableListService::getNumberOfItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getNumberOfItems.md) &ndash; Returns the number of items/rows of the query associated with the defined pluginId.
 - [TableListService::getItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getItems.md) &ndash; Returns an array of rows based on the defined pluginId.
 - [TableListService::getLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getLabel.md) &ndash; Returns the formatted label of the column, based on the given raw value.
-- [TableListService::getMultiplierInitialValues](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getMultiplierInitialValues.md) &ndash; Returns an array of the multiplier values when in update mode initial state (i.e.
 - [TableListService::setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setContainer.md) &ndash; Sets the container.
 - [TableListService::setConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setConfigurationHandler.md) &ndash; Sets the configurationHandler.
 - [TableListService::setPluginId](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setPluginId.md) &ndash; Sets the pluginId.

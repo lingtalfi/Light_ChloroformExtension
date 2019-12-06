@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [TableListService::setConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableList/TableListService.php#L188-L191)
+See the source code for method [TableListService::setConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableList/TableListService.php#L165-L168)
 
 
 See Also

@@ -1,6 +1,6 @@
 Ling/Light_ChloroformExtension
 ================
-2019-11-18 --> 2019-12-05
+2019-11-18 --> 2019-12-06
 
 
 
@@ -24,7 +24,6 @@ Table of contents
     - [TableListService::getNumberOfItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getNumberOfItems.md) &ndash; Returns the number of items/rows of the query associated with the defined pluginId.
     - [TableListService::getItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getItems.md) &ndash; Returns an array of rows based on the defined pluginId.
     - [TableListService::getLabel](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getLabel.md) &ndash; Returns the formatted label of the column, based on the given raw value.
-    - [TableListService::getMultiplierInitialValues](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/getMultiplierInitialValues.md) &ndash; Returns an array of the multiplier values when in update mode initial state (i.e.
     - [TableListService::setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setContainer.md) &ndash; Sets the container.
     - [TableListService::setConfigurationHandler](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setConfigurationHandler.md) &ndash; Sets the configurationHandler.
     - [TableListService::setPluginId](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService/setPluginId.md) &ndash; Sets the pluginId.
@@ -34,13 +33,13 @@ Table of contents
     - [TableListField::setForm](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setForm.md) &ndash; Sets the form instance.
     - [TableListField::setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setContainer.md) &ndash; Sets the container.
     - [TableListField::toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/toArray.md) &ndash; Returns the array representation of the field.
-    - [TableListField::setValue](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setValue.md) &ndash; Sets the value for this instance.
     - SelectField::create &ndash; Builds and returns the instance.
     - SelectField::setItems &ndash; Sets the items.
     - AbstractField::getId &ndash; Returns the field id.
     - AbstractField::addValidator &ndash; Adds a validator to this instance.
     - AbstractField::validates &ndash; Tests and returns whether every validator attached to this instanced passed.
     - AbstractField::getErrors &ndash; Returns an array of error messages.
+    - AbstractField::setValue &ndash; Sets the value for this instance.
     - AbstractField::getValue &ndash; Returns the value of the field.
     - AbstractField::getFallbackValue &ndash; Returns the fallback value, which defaults to null.
     - AbstractField::hasVeryImportantData &ndash; Returns whether this field contains [very important data](https://github.com/lingtalfi/Chloroform/blob/master/doc/pages/chloroform-discussion.md#the-concept-of-very-important-data).

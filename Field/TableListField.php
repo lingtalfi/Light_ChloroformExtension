@@ -8,7 +8,6 @@ use Ling\Chloroform\Field\FormAwareFieldInterface;
 use Ling\Chloroform\Field\SelectField;
 use Ling\Chloroform\Form\Chloroform;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
 use Ling\Light_ChloroformExtension\Field\TableList\TableListService;
 
 
@@ -105,7 +104,7 @@ class TableListField extends SelectField implements FormAwareFieldInterface
              */
             $tableList = $this->container->get('chloroform_extension')->getTableListService($arr['tableListIdentifier']);
             $value = $arr['value'];
-            if (empty($value)) { // insert mode
+            if ('insert' === $this->form->getMode()) { // insert mode
                 $arr['autoCompleteLabel'] = '';
             } else { // update mode
                 $arr['autoCompleteLabel'] = $tableList->getLabel($value);
@@ -113,44 +112,6 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         }
         return $arr;
     }
-
-    /**
-     * @overrides
-     */
-    public function setValue($value)
-    {
-        if (false === $this->form->isPosted()) {
-            if ('multiplier' === $this->properties['mode']) {
-                $options = $this->properties['multiplier'];
-
-                $table = $options['table'];
-                $whereCol = $options['where_column'];
-                $multiplierCol = $options['multiplier_column'];
-                /**
-                 * Assuming for now that the data is set in $_GET.
-                 * If from $_POST, add a property to choose the pool (get|post)...
-                 */
-                $whereColVal = $_GET[$whereCol] ?? null;
-                if (null !== $whereColVal) {
-
-
-                    /**
-                     * @var $tableList TableListService
-                     */
-                    $tableList = $this->container->get('chloroform_extension')->getTableListService($this->properties['tableListIdentifier']);
-                    $value = $tableList->getMultiplierInitialValues($table, $multiplierCol, $whereCol, $whereColVal);
-                } else {
-                    throw new LightChloroformExtensionException("Where column value not found for column $whereCol.");
-                }
-
-            }
-        }
-        return parent::setValue($value);
-    }
-
-
-
-
 
 
 

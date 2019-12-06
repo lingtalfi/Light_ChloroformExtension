@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.4.0 -- 2019-12-06
+
+    - update TableListField to adapt latest form multiplier trick changes
+    
 - 1.3.1 -- 2019-12-05
 
     - fix LightChloroformExtensionAjaxHandler not compatible with new TableListService addition
