@@ -37,7 +37,7 @@ abstract class <span class="pl-k">TableListFieldConfigurationHandlerInterface</s
 Methods
 ==============
 
-- [TableListFieldConfigurationHandlerInterface::getConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListFieldConfigurationHandlerInterface/getConfigurationItem.md) &ndash; Returns the [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
+- [TableListFieldConfigurationHandlerInterface::getConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListFieldConfigurationHandlerInterface/getConfigurationItem.md) &ndash; Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
 
 
 

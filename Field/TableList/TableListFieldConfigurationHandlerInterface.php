@@ -10,7 +10,7 @@ interface TableListFieldConfigurationHandlerInterface
 {
 
     /**
-     * Returns the @page(configuration item) corresponding to the given identifier.
+     * Returns the @page(table list configuration item) corresponding to the given identifier.
      *
      * @param string $identifier
      * @return array

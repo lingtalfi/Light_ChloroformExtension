@@ -7,7 +7,7 @@ TableListService::getConfigurationItem
 
 
 
-TableListService::getConfigurationItem — Returns the table list [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) referenced by the given pluginId.
+TableListService::getConfigurationItem — Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) referenced by the given pluginId.
 
 
 
@@ -21,7 +21,7 @@ public [TableListService::getConfigurationItem](https://github.com/lingtalfi/Lig
 
 
 
-Returns the table list [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) referenced by the given pluginId.
+Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) referenced by the given pluginId.
 
 
 

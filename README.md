@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.4.1 -- 2019-12-06
+
+    - update documentation links, configuration item => table list configuration item
+    
 - 1.4.0 -- 2019-12-06
 
     - update TableListField to adapt latest form multiplier trick changes

@@ -52,7 +52,7 @@ Methods
 ==============
 
 - [BaseTableListFieldConfigurationHandler::__construct](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/BaseTableListFieldConfigurationHandler/__construct.md) &ndash; Builds the LightKitAdminTableListConfigurationHandler instance.
-- [BaseTableListFieldConfigurationHandler::getConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/BaseTableListFieldConfigurationHandler/getConfigurationItem.md) &ndash; Returns the [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
+- [BaseTableListFieldConfigurationHandler::getConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/BaseTableListFieldConfigurationHandler/getConfigurationItem.md) &ndash; Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
 - [BaseTableListFieldConfigurationHandler::setConfigurationFile](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/BaseTableListFieldConfigurationHandler/setConfigurationFile.md) &ndash; Sets the configurationFile(s).
 
 

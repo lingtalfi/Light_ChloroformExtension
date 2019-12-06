@@ -179,7 +179,7 @@ class TableListService
 
 
     /**
-     * Returns the table list @page(configuration item) referenced by the given pluginId.
+     * Returns the @page(table list configuration item) referenced by the given pluginId.
      *
      * @param string|null $pluginId = null
      * @return array

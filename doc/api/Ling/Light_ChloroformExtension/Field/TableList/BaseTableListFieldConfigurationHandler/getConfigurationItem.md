@@ -7,7 +7,7 @@ BaseTableListFieldConfigurationHandler::getConfigurationItem
 
 
 
-BaseTableListFieldConfigurationHandler::getConfigurationItem — Returns the [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
+BaseTableListFieldConfigurationHandler::getConfigurationItem — Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
 
 
 
@@ -21,7 +21,7 @@ public [BaseTableListFieldConfigurationHandler::getConfigurationItem](https://gi
 
 
 
-Returns the [configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
+Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
 
 
 
