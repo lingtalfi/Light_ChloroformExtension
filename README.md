@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.4.2 -- 2019-12-09
+
+    - fix TableListField inducing multiple=true in update mode 
+    
 - 1.4.1 -- 2019-12-06
 
     - update documentation links, configuration item => table list configuration item

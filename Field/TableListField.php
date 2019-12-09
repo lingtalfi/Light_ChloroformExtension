@@ -52,10 +52,6 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         $properties['threshold'] = $threshold;
         $properties['useAutoComplete'] = $useAutoComplete;
         $properties['mode'] = $mode;
-        if ('multiplier' === $mode) {
-            $properties['multiple'] = true;
-        }
-
         parent::__construct($properties);
         $this->container = null;
         $this->isPrepared = false;
@@ -93,6 +89,12 @@ class TableListField extends SelectField implements FormAwareFieldInterface
     {
         $this->prepareItems();
         $arr = parent::toArray();
+
+        if ('multiplier' === $this->properties['mode']) {
+            if ('insert' === $this->form->getMode()) {
+                $arr['multiple'] = true;
+            }
+        }
 
 
         //--------------------------------------------

@@ -59,7 +59,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [TableListField::toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L92-L114)
+See the source code for method [TableListField::toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L88-L116)
 
 
 See Also

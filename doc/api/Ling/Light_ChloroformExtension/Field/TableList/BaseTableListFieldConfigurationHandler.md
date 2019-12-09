@@ -4,7 +4,7 @@
 
 The BaseTableListFieldConfigurationHandler class
 ================
-2019-11-18 --> 2019-12-06
+2019-11-18 --> 2019-12-09
 
 
 
