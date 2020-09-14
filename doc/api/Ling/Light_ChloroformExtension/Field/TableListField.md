@@ -61,6 +61,7 @@ class <span class="pl-k">TableListField</span> extends [SelectField](https://git
     - public AbstractField::getErrors() : array
     - public AbstractField::setValue($value) : Ling\Chloroform\Field\AbstractField
     - public AbstractField::getValue() : mixed
+    - public AbstractField::getFormattedValue() : mixed
     - public AbstractField::getFallbackValue() : mixed
     - public AbstractField::hasVeryImportantData() : bool
     - public AbstractField::getDataTransformer() : [DataTransformerInterface](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/DataTransformer/DataTransformerInterface.md) | null
@@ -206,6 +207,7 @@ Methods
 - AbstractField::getErrors &ndash; Returns an array of error messages.
 - AbstractField::setValue &ndash; Sets the value for this instance.
 - AbstractField::getValue &ndash; Returns the value of the field.
+- AbstractField::getFormattedValue &ndash; Returns the formatted value of this field.
 - AbstractField::getFallbackValue &ndash; Returns the fallback value, which defaults to null.
 - AbstractField::hasVeryImportantData &ndash; Returns whether this field contains [very important data](https://github.com/lingtalfi/Chloroform/blob/master/doc/pages/chloroform-discussion.md#the-concept-of-very-important-data).
 - AbstractField::getDataTransformer &ndash; Returns the data transformer of this field if any, or null otherwise.

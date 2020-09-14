@@ -35,6 +35,7 @@ Table of contents
     - AbstractField::getErrors &ndash; Returns an array of error messages.
     - AbstractField::setValue &ndash; Sets the value for this instance.
     - AbstractField::getValue &ndash; Returns the value of the field.
+    - AbstractField::getFormattedValue &ndash; Returns the formatted value of this field.
     - AbstractField::getFallbackValue &ndash; Returns the fallback value, which defaults to null.
     - AbstractField::hasVeryImportantData &ndash; Returns whether this field contains [very important data](https://github.com/lingtalfi/Chloroform/blob/master/doc/pages/chloroform-discussion.md#the-concept-of-very-important-data).
     - AbstractField::getDataTransformer &ndash; Returns the data transformer of this field if any, or null otherwise.
@@ -61,10 +62,9 @@ Dependencies
 - [Light_CsrfSession](https://github.com/lingtalfi/Light_CsrfSession)
 - [Light_MicroPermission](https://github.com/lingtalfi/Light_MicroPermission)
 - [Light_Database](https://github.com/lingtalfi/Light_Database)
-- [Light_UserManager](https://github.com/lingtalfi/Light_UserManager)
+- [Light_Nugget](https://github.com/lingtalfi/Light_Nugget)
 - [SimplePdoWrapper](https://github.com/lingtalfi/SimplePdoWrapper)
 - [SqlWizard](https://github.com/lingtalfi/SqlWizard)
 - [Chloroform](https://github.com/lingtalfi/Chloroform)
-- [Light_Nugget](https://github.com/lingtalfi/Light_Nugget)
 
 

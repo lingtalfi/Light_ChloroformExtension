@@ -6,8 +6,7 @@ namespace Ling\Light_ChloroformExtension\Field\TableList;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
 use Ling\Light_Database\Service\LightDatabaseService;
-use Ling\Light_MicroPermission\Service\LightMicroPermissionService;
-use Ling\Light_UserManager\Service\LightUserManagerService;
+use Ling\Light_Nugget\Service\LightNuggetService;
 use Ling\SimplePdoWrapper\SimplePdoWrapperInterface;
 use Ling\SqlWizard\Util\MysqlSelectQueryParser;
 
@@ -183,7 +182,6 @@ class TableListService
         $q = MysqlSelectQueryParser::recompileParts($parts);
 
 
-
         /**
          * @var $db LightDatabaseService
          */
@@ -270,93 +268,16 @@ class TableListService
         if (false === $this->securityChecked) {
             $this->securityChecked = true;
 
-
-            if (array_key_exists("security", $this->nugget)) {
-                $security = $this->nugget["security"];
-                $any = $security['any'] ?? [];
-                $all = $security['all'] ?? [];
-
-
-                $um = null;
-                $mp = null;
-
-
-                /**
-                 * Note: the implementation below is not fixed (see conception notes),
-                 *  maybe we will be able to merge any and all in the future, but for now,
-                 * as I need to write something, I just execute them one after the other.
-                 */
-                if ($any) {
-                    foreach ($any as $type => $value) {
-                        switch ($type) {
-                            case "permission":
-
-                                if (null === $um) {
-                                    /**
-                                     * @var $um LightUserManagerService
-                                     */
-                                    $um = $this->container->get('user_manager');
-                                }
-                                $user = $um->getValidWebsiteUser();
-                                if ($user->hasRight($value)) {
-                                    return; // the user is granted
-                                }
-                                break;
-                            case "micro_permission":
-                                if (null === $mp) {
-                                    /**
-                                     * @var $mp LightMicroPermissionService
-                                     */
-                                    $mp = $this->container->get("micro_permission");
-                                }
-                                if (true === $mp->hasMicroPermission($value)) {
-                                    return; // user is granted
-                                }
-
-                                break;
-                            default:
-                                $this->error("Unknown type: $type.");
-                                break;
-                        }
-                    }
-
-                } elseif ($all) {
-                    foreach ($all as $type => $value) {
-                        switch ($type) {
-                            case "permission":
-
-                                if (null === $um) {
-                                    /**
-                                     * @var $um LightUserManagerService
-                                     */
-                                    $um = $this->container->get('user_manager');
-                                }
-                                $user = $um->getValidWebsiteUser();
-                                if (false === $user->hasRight($value)) {
-                                    $this->error("Permission denied: the current user is doesn't have the \"$value\" permission.");
-                                }
-                                break;
-                            case "micro_permission":
-                                if (null === $mp) {
-                                    /**
-                                     * @var $mp LightMicroPermissionService
-                                     */
-                                    $mp = $this->container->get("micro_permission");
-                                }
-                                if (false === $mp->hasMicroPermission($value)) {
-                                    $this->error("Permission denied: the current user is doesn't have the \"$value\" micro-permission.");
-                                }
-
-                                break;
-                            default:
-                                $this->error("Unknown type: $type.");
-                                break;
-                        }
-                    }
-                }
-
-            }
-
+            /**
+             * For now, we can't specify the params.
+             * Maybe if this feature is needed we'll update that bit...
+             */
+            $params = [];
+            /**
+             * @var $ng LightNuggetService
+             */
+            $ng = $this->container->get("nugget");
+            $ng->checkSecurity($this->nugget, $params);
         }
     }
 
