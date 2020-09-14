@@ -277,7 +277,9 @@ class TableListService
              * @var $ng LightNuggetService
              */
             $ng = $this->container->get("nugget");
-            $ng->checkSecurity($this->nugget, $params);
+            if (array_key_exists("security", $this->nugget)) {
+                $ng->checkSecurity($this->nugget['security'], $params);
+            }
         }
     }
 
