@@ -1,6 +1,6 @@
 Light_ChloroformExtension
 ===========
-2019-11-18 -> 2020-06-04
+2019-11-18 -> 2020-09-14
 
 
 
@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.6.0 -- 2020-09-14
+
+    - new TableListField api 
+    
 - 1.5.0 -- 2020-06-04
 
     - adapt for new Light_AjaxHandler api 

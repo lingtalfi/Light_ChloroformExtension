@@ -3,11 +3,9 @@
 
 namespace Ling\Light_ChloroformExtension\Service;
 
-use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
-use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
-use Ling\Light_ChloroformExtension\Field\TableList\TableListFieldConfigurationHandlerInterface;
 use Ling\Light_ChloroformExtension\Field\TableList\TableListService;
+use Ling\Light_Nugget\Service\LightNuggetService;
 
 /**
  * The LightChloroformExtensionService class.
@@ -22,15 +20,6 @@ class LightChloroformExtensionService
      */
     protected $container;
 
-    /**
-     * This property holds the configurationHandlers for this instance.
-     * It's an array of pluginName => TableListFieldConfigurationHandlerInterface.
-     * @var TableListFieldConfigurationHandlerInterface[]
-     */
-    protected $tableListConfigurationHandlers;
-
-
-
 
     /**
      * Builds the LightChloroformExtensionService instance.
@@ -38,23 +27,28 @@ class LightChloroformExtensionService
     public function __construct()
     {
         $this->container = null;
-        $this->tableListConfigurationHandlers = [];
     }
 
 
     /**
-     * Registers a table list configuration handler for the given plugin name.
-     * @param string $pluginName
-     * @param TableListFieldConfigurationHandlerInterface $handler
+     *
+     * Returns the @page(table list configuration item) corresponding to the given identifier.
+     *
+     * See the @page(Light_ChloroformExtension conception notes) for more details.
+     *
+     * @param string $identifier
+     * @return array
+     * @throws \Exception
      */
-    public function registerTableListConfigurationHandler(string $pluginName, TableListFieldConfigurationHandlerInterface $handler)
+    public function getConfigurationItem(string $identifier): array
     {
-        if ($handler instanceof LightServiceContainerAwareInterface) {
-            $handler->setContainer($this->container);
-        }
-        $this->tableListConfigurationHandlers[$pluginName] = $handler;
-    }
+        /**
+         * @var $ng LightNuggetService
+         */
+        $ng = $this->container->get("nugget");
+        return $ng->getNugget($identifier, "Light_ChloroformExtension/tablelist");
 
+    }
 
     /**
      * Returns the table list service based on the given table list identifier.
@@ -65,16 +59,11 @@ class LightChloroformExtensionService
      */
     public function getTableListService(string $tableListIdentifier): TableListService
     {
-        list($pluginName, $pluginId) = explode(".", $tableListIdentifier, 2);
-        if (array_key_exists($pluginName, $this->tableListConfigurationHandlers)) {
-            $handler = $this->tableListConfigurationHandlers[$pluginName];
-            $service = new TableListService();
-            $service->setContainer($this->container);
-            $service->setConfigurationHandler($handler);
-            $service->setPluginId($pluginId);
-            return $service;
-        }
-        throw new LightChloroformExtensionException("Plugin for tableList not registered: $pluginName, with identifier $tableListIdentifier.");
+        $nugget = $this->getConfigurationItem($tableListIdentifier);
+        $service = new TableListService();
+        $service->setContainer($this->container);
+        $service->setNugget($nugget);
+        return $service;
     }
 
     //--------------------------------------------

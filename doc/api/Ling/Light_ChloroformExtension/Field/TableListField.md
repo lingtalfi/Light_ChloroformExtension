@@ -4,7 +4,7 @@
 
 The TableListField class
 ================
-2019-11-18 --> 2020-06-04
+2019-11-18 --> 2020-09-14
 
 
 
@@ -50,6 +50,7 @@ class <span class="pl-k">TableListField</span> extends [SelectField](https://git
     - public [setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setContainer.md)([Ling\Light\ServiceContainer\LightServiceContainerInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerInterface.md) $container) : [TableListField](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField.md)
     - public [toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/toArray.md)() : array
     - private [prepareItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/prepareItems.md)() : void
+    - private [getTableListService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/getTableListService.md)() : [TableListService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableList/TableListService.md)
 
 - Inherited methods
     - public static SelectField::create(string $label, ?array $properties = []) : [SelectField](https://github.com/lingtalfi/Chloroform/blob/master/doc/api/Ling/Chloroform/Field/SelectField.md)
@@ -196,6 +197,7 @@ Methods
 - [TableListField::setContainer](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/setContainer.md) &ndash; Sets the container.
 - [TableListField::toArray](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/toArray.md) &ndash; Returns the array representation of the field.
 - [TableListField::prepareItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/prepareItems.md) &ndash; Prepares this class to be exported with the toArray method.
+- [TableListField::getTableListService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/api/Ling/Light_ChloroformExtension/Field/TableListField/getTableListService.md) &ndash; Returns a configured TableListService instance.
 - SelectField::create &ndash; Builds and returns the instance.
 - SelectField::setItems &ndash; Sets the items.
 - AbstractField::getId &ndash; Returns the field id.

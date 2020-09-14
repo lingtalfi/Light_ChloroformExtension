@@ -8,6 +8,7 @@ use Ling\Chloroform\Field\FormAwareFieldInterface;
 use Ling\Chloroform\Field\SelectField;
 use Ling\Chloroform\Form\Chloroform;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
 use Ling\Light_ChloroformExtension\Field\TableList\TableListService;
 
 
@@ -41,16 +42,22 @@ class TableListField extends SelectField implements FormAwareFieldInterface
      */
     public function __construct(array $properties = [])
     {
+
+        /**
+         * Note that most of the properties defined below are overridden by
+         * the values set in the nugget identified by the tableListIdentifier.
+         */
+
         // ensure the some properties are defined
         $tableListIdentifier = $properties['tableListIdentifier'] ?? null;
         $threshold = $properties['threshold'] ?? 200;
         $mode = $properties['mode'] ?? 'default'; // default | multiplier
-        $useAutoComplete = false;
-
         //
         $properties['tableListIdentifier'] = $tableListIdentifier;
         $properties['threshold'] = $threshold;
-        $properties['useAutoComplete'] = $useAutoComplete;
+
+        $properties['renderAs'] = $properties['renderAs'] ?? "adapt"; // adapt|select|autocomplete
+        $properties['useAutoComplete'] = false; // dynamically set (i.e. not configurable), this is for the renderer...
         $properties['mode'] = $mode;
         parent::__construct($properties);
         $this->container = null;
@@ -58,6 +65,10 @@ class TableListField extends SelectField implements FormAwareFieldInterface
     }
 
 
+
+    //--------------------------------------------
+    // FormAwareFieldInterface
+    //--------------------------------------------
     /**
      * @implementation
      */
@@ -128,25 +139,58 @@ class TableListField extends SelectField implements FormAwareFieldInterface
     {
         if (false === $this->isPrepared) {
 
-            $tableListIdentifier = $this->properties['tableListIdentifier'];
-
             /**
              * @var $tableList TableListService
              */
-            $tableList = $this->container->get('chloroform_extension')->getTableListService($tableListIdentifier);
-            $numberOfItems = $tableList->getNumberOfItems();
-
-
-            if ($numberOfItems > $this->properties['threshold']) {
-                // use auto-complete
-
-                $this->properties['useAutoComplete'] = true;
-            } else {
-                $items = $tableList->getItems();
-                $this->setItems($items);
+            $tableList = $this->getTableListService();
+            $props = [
+                "renderAs",
+                "threshold",
+            ];
+            $nugget = $tableList->getNugget();
+            foreach ($props as $prop) {
+                if (array_key_exists($prop, $nugget)) {
+                    $this->properties[$prop] = $nugget[$prop];
+                }
             }
+
+
+            switch ($this->properties['renderAs']) {
+                case "select":
+                    $items = $tableList->getItems();
+                    $this->setItems($items);
+                    break;
+                case "autocomplete":
+                    $this->properties['useAutoComplete'] = true;
+                    break;
+                case "adapt":
+                    $nbItems = $tableList->getNumberOfItems();
+                    if ($nbItems > $this->properties['threshold']) {
+                        $this->properties['useAutoComplete'] = true;
+                    } else {
+                        $items = $tableList->getItems();
+                        $this->setItems($items);
+                    }
+                    break;
+                default:
+                    throw new LightChloroformExtensionException("Unknown renderAs value: " . $this->properties['renderAs']);
+                    break;
+            }
+
             $this->isPrepared = true;
         }
     }
 
+
+    /**
+     * Returns a configured TableListService instance.
+     *
+     * @return TableListService
+     * @throws \Exception
+     */
+    private function getTableListService(): TableListService
+    {
+        $tableListIdentifier = $this->properties['tableListIdentifier'];
+        return $this->container->get('chloroform_extension')->getTableListService($tableListIdentifier);
+    }
 }
