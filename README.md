@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.6.3 -- 2020-09-14
+
+    - adapt TableListService->checkSecurity to latest Light_Nugget changes 
+    
 - 1.6.2 -- 2020-09-14
 
     - adapt TableListService->checkSecurity to latest Light_Nugget changes 

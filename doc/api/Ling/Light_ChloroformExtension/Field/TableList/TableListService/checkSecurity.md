@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [TableListService::checkSecurity](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableList/TableListService.php#L266-L284)
+See the source code for method [TableListService::checkSecurity](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableList/TableListService.php#L266-L282)
 
 
 See Also
