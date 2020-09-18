@@ -55,6 +55,7 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         //
         $properties['tableListIdentifier'] = $tableListIdentifier;
         $properties['threshold'] = $threshold;
+        $properties['size'] = $properties['size'] ?? null;
 
         $properties['renderAs'] = $properties['renderAs'] ?? "adapt"; // adapt|select|autocomplete
         $properties['useAutoComplete'] = false; // dynamically set (i.e. not configurable), this is for the renderer...
@@ -102,9 +103,7 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         $arr = parent::toArray();
 
         if ('multiplier' === $this->properties['mode']) {
-            if ('insert' === $this->form->getMode()) {
-                $arr['multiple'] = true;
-            }
+            $arr['multiple'] = true;
         }
 
 

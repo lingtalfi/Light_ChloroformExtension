@@ -51,7 +51,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [TableListField::getTableListService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L191-L195)
+See the source code for method [TableListField::getTableListService](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L190-L194)
 
 
 See Also

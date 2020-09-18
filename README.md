@@ -1,6 +1,6 @@
 Light_ChloroformExtension
 ===========
-2019-11-18 -> 2020-09-14
+2019-11-18 -> 2020-09-18
 
 
 
@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.6.4 -- 2020-09-18
+
+    - implementation of form multiplier trick 
+    
 - 1.6.3 -- 2020-09-14
 
     - adapt TableListService->checkSecurity to latest Light_Nugget changes 
