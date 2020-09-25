@@ -22,8 +22,10 @@ public [LightChloroformExtensionService::getConfigurationItem](https://github.co
 
 
 Returns the [table list configuration item](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md#configuration-item) corresponding to the given identifier.
+The identifier is either the nuggetId or the nuggetDirectiveId.
 
 See the [Light_ChloroformExtension conception notes](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/doc/pages/conception-notes.md) for more details.
+See the [Light_Nugget conception notes](https://github.com/lingtalfi/Light_Nugget/blob/master/doc/pages/conception-notes.md) for more details.
 
 
 
@@ -56,7 +58,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LightChloroformExtensionService::getConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L43-L51)
+See the source code for method [LightChloroformExtensionService::getConfigurationItem](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Service/LightChloroformExtensionService.php#L46-L64)
 
 
 See Also

@@ -8,6 +8,7 @@ use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
 use Ling\Light_Database\Service\LightDatabaseService;
 use Ling\Light_Nugget\Service\LightNuggetService;
 use Ling\SimplePdoWrapper\SimplePdoWrapperInterface;
+use Ling\SimplePdoWrapper\Util\Where;
 use Ling\SqlWizard\Util\MysqlSelectQueryParser;
 
 /**
@@ -155,42 +156,64 @@ class TableListService
 
 
     /**
-     * Returns the formatted label of the column, based on the given raw value.
+     * Returns the formatted value => label(s) for the given value(s).
+     *
+     * If a string is passed, the returned array will contain only one element.
+     * If an array is passed, the returned array will contain the same number of elements as the given array.
      *
      * This uses the "column" directive of the configuration item.
      * See the @page(chloroformExtension conception notes) for more info).
      *
      *
-     * @param string $columnValue
+     * @param string $value
      * @return string
      * @throws \Exception
      */
-    public function getLabel(string $columnValue): string
+    public function getValueToLabels($value): array
     {
+        /**
+         * @var $db LightDatabaseService
+         */
+        $db = $this->container->get("database");
+        $multiple = is_array($value);
+
+
         $conf = $this->nugget;
         $q = $conf['sql'];
         $column = $conf['column'];
 
 
         $markers = [];
-
-
         $parts = MysqlSelectQueryParser::getQueryParts($q);
-        $wherePart = $column . ' = :columnvalue';
+
+
+        if (true === $multiple) {
+            $wherePart = '';
+            $whereConds = Where::inst()->key($column)->in($value);
+            $whereConds->apply($wherePart, $markers);
+        } else {
+            $wherePart = $column . ' = :columnvalue';
+            $markers['columnvalue'] = $value;
+
+        }
+
         MysqlSelectQueryParser::combineWhere($parts, $wherePart);
-        $markers['columnvalue'] = $columnValue;
         $q = MysqlSelectQueryParser::recompileParts($parts);
 
 
-        /**
-         * @var $db LightDatabaseService
-         */
-        $db = $this->container->get("database");
-        $row = $db->fetch($q, $markers);
-        if (false !== $row) {
-            return $row['label'];
+        if (true === $multiple) {
+            // by definition, label is the second column, see conception notes
+            return  $db->fetchAll($q, $markers, \PDO::FETCH_COLUMN | \PDO::FETCH_UNIQUE);
+        } else {
+            $row = $db->fetch($q, $markers);
+            if (false !== $row) {
+                return [
+                    $value => $row['label'],
+                ];
+            }
+            throw new LightChloroformExtensionException("Couldn't fetch the row value with query $q.");
+
         }
-        throw new LightChloroformExtensionException("Couldn't fetch the row value with query $q.");
     }
 
 

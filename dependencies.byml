@@ -9,6 +9,7 @@ dependencies:
         - SimplePdoWrapper
         - SqlWizard
         - Chloroform
+        - Light_Realform
     
 
 post_install: 

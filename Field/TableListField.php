@@ -50,10 +50,15 @@ class TableListField extends SelectField implements FormAwareFieldInterface
 
         // ensure the some properties are defined
         $tableListIdentifier = $properties['tableListIdentifier'] ?? null;
+        $tableListDirectiveId = $properties['tableListDirectiveId'] ?? null;
+
+
         $threshold = $properties['threshold'] ?? 200;
         $mode = $properties['mode'] ?? 'default'; // default | multiplier
         //
         $properties['tableListIdentifier'] = $tableListIdentifier;
+        $properties['tableListDirectiveId'] = $tableListDirectiveId;
+
         $properties['threshold'] = $threshold;
         $properties['size'] = $properties['size'] ?? null;
 
@@ -102,8 +107,10 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         $this->prepareItems();
         $arr = parent::toArray();
 
+        $isMultiple = false;
         if ('multiplier' === $this->properties['mode']) {
             $arr['multiple'] = true;
+            $isMultiple = true;
         }
 
 
@@ -114,12 +121,13 @@ class TableListField extends SelectField implements FormAwareFieldInterface
             /**
              * @var $tableList TableListService
              */
-            $tableList = $this->container->get('chloroform_extension')->getTableListService($arr['tableListIdentifier']);
+//            $tableList = $this->container->get('chloroform_extension')->getTableListService($arr['tableListIdentifier']);
+            $tableList = $this->getTableListService();
             $value = $arr['value'];
             if ('insert' === $this->form->getMode()) { // insert mode
-                $arr['autoCompleteLabel'] = '';
+                $arr['autoCompleteValueToLabels'] = '';
             } else { // update mode
-                $arr['autoCompleteLabel'] = $tableList->getLabel($value);
+                $arr['autoCompleteValueToLabels'] = $tableList->getValueToLabels($value);
             }
         }
         return $arr;
@@ -190,6 +198,8 @@ class TableListField extends SelectField implements FormAwareFieldInterface
     private function getTableListService(): TableListService
     {
         $tableListIdentifier = $this->properties['tableListIdentifier'];
-        return $this->container->get('chloroform_extension')->getTableListService($tableListIdentifier);
+        $tableListDirectiveId = $this->properties['tableListDirectiveId'];
+        $id = $tableListDirectiveId ?? $tableListIdentifier;
+        return $this->container->get('chloroform_extension')->getTableListService($id);
     }
 }

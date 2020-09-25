@@ -46,7 +46,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [TableListService::getNugget](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableList/TableListService.php#L65-L68)
+See the source code for method [TableListService::getNugget](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableList/TableListService.php#L66-L69)
 
 
 See Also

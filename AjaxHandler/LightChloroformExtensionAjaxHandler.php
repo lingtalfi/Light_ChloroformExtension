@@ -30,10 +30,10 @@ class LightChloroformExtensionAjaxHandler extends BaseLightAjaxHandler
         switch ($action) {
             case "table_list.autocomplete":
 
-                if (array_key_exists("tableListIdentifier", $params)) {
+                if (array_key_exists("tableListId", $params)) {
 
 
-                    $tableListIdentifier = $params['tableListIdentifier'];
+                    $tableListId = $params['tableListId'];
                     $searchExpression = $params['q'] ?? '';
 
 
@@ -45,7 +45,7 @@ class LightChloroformExtensionAjaxHandler extends BaseLightAjaxHandler
                     /**
                      * @var $tableList TableListService
                      */
-                    $tableList = $chloroformX->getTableListService($tableListIdentifier);
+                    $tableList = $chloroformX->getTableListService($tableListId);
 
 
                     //--------------------------------------------

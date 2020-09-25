@@ -1,6 +1,6 @@
 Light_ChloroformExtension conception notes
 ==============
-2019-11-14 -> 2020-09-14
+2019-11-14 -> 2020-09-25
 
 
 
@@ -31,7 +31,7 @@ displaying all the fields found in our plugin.
 
 TableListField
 ---------------
-2019-11-14 -> 2020-09-14
+2019-11-14 -> 2020-09-24
 
 
 The idea of this field is to provide a list (like a html select) of items coming from a database table.
@@ -65,14 +65,28 @@ The big picture, as you can probably guess, with ajax is this:
 
 
 
-This field is configured entirely from the **configuration item**, so it can't be used as a standalone Field.
+
+
+In terms of Field instance configuration, we use a **configuration item**, described below.
+
+The location of this configuration item is defined by either of those (Field) properties:
+
+- tableListIdentifier: string, a nuggetId identifying the **configuration file**. See more details about nuggetId in the [Light_Nugget conception notes](https://github.com/lingtalfi/Light_Nugget/blob/master/doc/pages/conception-notes.md).
+    With this technique, your configuration item is written in a dedicated configuration file in **app/config/data/YourPlugin/Light_ChloroformExtension/tablelist/some_id.byml**
+    
+- tableListDirectiveId: string, the [Light_Realform](https://github.com/lingtalfi/Light_Realform) nuggetDirectiveId identifying the **configuration item**. See more details in the [Light_Nugget conception notes](https://github.com/lingtalfi/Light_Nugget/blob/master/doc/pages/conception-notes.md).
+    With this technique, your configuration item is written directly in the realform configuration, in **app/config/data/YourPlugin/Light_Realform/form/some_id.byml**.
+    See the [configuration file section of the Light_Realform conception notes](https://github.com/lingtalfi/Light_Realform/blob/master/doc/pages/2020/conception-notes.md#the-configuration-file) for more details.
+    
+
+                
 
 
 
 
 
 ### Configuration item
-2020-09-10 -> 2020-09-14
+2020-09-10 -> 2020-09-25
 
 
 The behaviour of the **table list field** is defined in the configuration.
@@ -98,7 +112,7 @@ The configuration looks like this:
 
 
 - sql: the sql query to fetch the items that you want.
-    Your query must return two columns named **value** and **label**, for instance: 
+    Your query must return two columns named **value** and **label**, in that order. For instance: 
    
     - select id as value, first_name as label from user_table
     - select id as value, concat(id, ".", first_name) as label from `user_table`

@@ -1,6 +1,6 @@
 Light_ChloroformExtension
 ===========
-2019-11-18 -> 2020-09-18
+2019-11-18 -> 2020-09-25
 
 
 
@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.6.5 -- 2020-09-25
+
+    - update TableListField, now autocomplete also works with multiplier trick 
+    
 - 1.6.4 -- 2020-09-18
 
     - implementation of form multiplier trick 
