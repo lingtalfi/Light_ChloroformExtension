@@ -54,17 +54,19 @@ class TableListField extends SelectField implements FormAwareFieldInterface
 
 
         $threshold = $properties['threshold'] ?? 200;
-        $mode = $properties['mode'] ?? 'default'; // default | multiplier
+        $multiplier = $properties['multiplier'] ?? [];
+
+
         //
         $properties['tableListIdentifier'] = $tableListIdentifier;
         $properties['tableListDirectiveId'] = $tableListDirectiveId;
+        $properties['multiplier'] = $multiplier;
 
         $properties['threshold'] = $threshold;
         $properties['size'] = $properties['size'] ?? null;
 
         $properties['renderAs'] = $properties['renderAs'] ?? "adapt"; // adapt|select|autocomplete
         $properties['useAutoComplete'] = false; // dynamically set (i.e. not configurable), this is for the renderer...
-        $properties['mode'] = $mode;
         parent::__construct($properties);
         $this->container = null;
         $this->isPrepared = false;
@@ -107,10 +109,18 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         $this->prepareItems();
         $arr = parent::toArray();
 
-        $isMultiple = false;
-        if ('multiplier' === $this->properties['mode']) {
-            $arr['multiple'] = true;
-            $isMultiple = true;
+        $multiplier = $this->properties['multiplier'] ?? [];
+        $multiplierMode = $multiplier['mode'] ?? 'off';
+
+        $formMode = $this->form->getMode();
+
+
+        if ('off' !== $multiplierMode) {
+            if ('own' === $multiplierMode && 'insert' !== $formMode) {
+                // the own mode can only be used with form insert mode
+            } else {
+                $arr['multiple'] = true;
+            }
         }
 
 
@@ -124,10 +134,21 @@ class TableListField extends SelectField implements FormAwareFieldInterface
 //            $tableList = $this->container->get('chloroform_extension')->getTableListService($arr['tableListIdentifier']);
             $tableList = $this->getTableListService();
             $value = $arr['value'];
-            if ('insert' === $this->form->getMode()) { // insert mode
+            if ('insert' === $formMode) { // insert mode
                 $arr['autoCompleteValueToLabels'] = '';
             } else { // update mode
-                $arr['autoCompleteValueToLabels'] = $tableList->getValueToLabels($value);
+
+                /**
+                 * The user has deleted the record identified by the updateRic,
+                 * which cause a null value here, we don't handle this problem (i.e.
+                 * it's handled at a higher level), but we avoid throwing the exception
+                 * which might confuse the process
+                 */
+                if (null === $value) {
+                    $arr['autoCompleteValueToLabels'] = '';
+                } else {
+                    $arr['autoCompleteValueToLabels'] = $tableList->getValueToLabels($value);
+                }
             }
         }
         return $arr;

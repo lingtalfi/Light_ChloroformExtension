@@ -3,6 +3,7 @@
 
 namespace Ling\Light_ChloroformExtension\Field\TableList;
 
+use Ling\ArrayToString\ArrayToStringTool;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_ChloroformExtension\Exception\LightChloroformExtensionException;
 use Ling\Light_Database\Service\LightDatabaseService;
@@ -211,7 +212,7 @@ class TableListService
                     $value => $row['label'],
                 ];
             }
-            throw new LightChloroformExtensionException("Couldn't fetch the row value with query $q.");
+            throw new LightChloroformExtensionException("Couldn't fetch the row value with query $q, and markers " . ArrayToStringTool::toInlinePhpArray($markers));
 
         }
     }
