@@ -51,7 +51,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [TableListField::prepareItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L166-L210)
+See the source code for method [TableListField::prepareItems](https://github.com/lingtalfi/Light_ChloroformExtension/blob/master/Field/TableListField.php#L157-L201)
 
 
 See Also

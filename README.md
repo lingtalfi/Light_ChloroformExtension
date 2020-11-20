@@ -1,6 +1,6 @@
 Light_ChloroformExtension
 ===========
-2019-11-18 -> 2020-11-19
+2019-11-18 -> 2020-11-20
 
 
 
@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.6.7 -- 2020-11-20
+
+    - update TableListField conception notes to adapt simpler form multiplier trick 
+    
 - 1.6.6 -- 2020-11-19
 
     - update TableListField conception notes to adapt new form multiplier trick 

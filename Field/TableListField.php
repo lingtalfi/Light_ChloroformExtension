@@ -109,19 +109,10 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         $this->prepareItems();
         $arr = parent::toArray();
 
-        $multiplier = $this->properties['multiplier'] ?? [];
-        $multiplierMode = $multiplier['mode'] ?? 'off';
+
+        $arr['multiple'] = $this->properties['multiplier'] ?? false;
 
         $formMode = $this->form->getMode();
-
-
-        if ('off' !== $multiplierMode) {
-            if ('own' === $multiplierMode && 'insert' !== $formMode) {
-                // the own mode can only be used with form insert mode
-            } else {
-                $arr['multiple'] = true;
-            }
-        }
 
 
         //--------------------------------------------
