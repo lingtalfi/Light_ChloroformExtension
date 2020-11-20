@@ -109,8 +109,12 @@ class TableListField extends SelectField implements FormAwareFieldInterface
         $this->prepareItems();
         $arr = parent::toArray();
 
+        if ('update' === $this->form->getMode()) {
+            $arr['multiple'] = false;
+        } else {
+            $arr['multiple'] = $this->properties['multiplier'] ?? false;
+        }
 
-        $arr['multiple'] = $this->properties['multiplier'] ?? false;
 
         $formMode = $this->form->getMode();
 

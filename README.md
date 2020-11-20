@@ -81,6 +81,10 @@ Related
 History Log
 =============
 
+- 1.6.9 -- 2020-11-20
+
+    - fix TableListField, multiplier was erroneously initialized in update mode 
+    
 - 1.6.8 -- 2020-11-20
 
     - fix TableListField, multiplier initialized to array instead of false 
