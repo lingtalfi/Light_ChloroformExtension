@@ -54,7 +54,7 @@ class TableListField extends SelectField implements FormAwareFieldInterface
 
 
         $threshold = $properties['threshold'] ?? 200;
-        $multiplier = $properties['multiplier'] ?? [];
+        $multiplier = $properties['multiplier'] ?? false;
 
 
         //
