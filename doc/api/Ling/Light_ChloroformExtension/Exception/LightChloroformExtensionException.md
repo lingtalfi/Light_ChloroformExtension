@@ -4,7 +4,7 @@
 
 The LightChloroformExtensionException class
 ================
-2019-11-18 --> 2020-12-04
+2019-11-18 --> 2020-12-08
 
 
 
